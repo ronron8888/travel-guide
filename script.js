@@ -2,16 +2,24 @@
   const init = () => {
     const foodGrid = document.getElementById('foodGrid');
 
-    // Food cards: photo + shop name + one-line note + detail link.
+    // Food cards: use a live screenshot of each source page so the cards always have
+    // a real image without relying on guessed/unstable image-file URLs.
     if (foodGrid && window.travel?.food) {
       const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (m) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '\"':'&quot;', "'":'&#039;' }[m]));
+      const screenshot = (url) => url
+        ? `https://image.thum.io/get/width/900/crop/650/noanimate/${url}`
+        : 'https://koedo.or.jp/wp-content/uploads/018499d5096841e2ac350b62fa6c2fee-scaled.jpg';
       const fallbackImage = 'https://koedo.or.jp/wp-content/uploads/018499d5096841e2ac350b62fa6c2fee-scaled.jpg';
+
+      foodGrid.classList.remove('spots');
       foodGrid.classList.add('food-grid');
-      foodGrid.innerHTML = travel.food.map((item) => `
+      foodGrid.innerHTML = travel.food.map((item) => {
+        const image = screenshot(item.url);
+        return `
         <article class="food-card reveal">
           <a class="food-card-link" href="${esc(item.url || '#')}" target="_blank" rel="noopener noreferrer">
             <div class="food-card-image-wrap">
-              <img class="food-card-image" src="${esc(item.image || fallbackImage)}" alt="${esc(item.name)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${fallbackImage}'">
+              <img class="food-card-image" src="${esc(image)}" alt="${esc(item.name)}" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='${fallbackImage}'">
             </div>
             <div class="food-card-body">
               <div class="eyebrow">FOOD / KAWAGOE</div>
@@ -20,8 +28,8 @@
               <span class="food-card-detail">DETAILS <span>↗</span></span>
             </div>
           </a>
-        </article>
-      `).join('');
+        </article>`;
+      }).join('');
     }
 
     const style = document.createElement('style');
