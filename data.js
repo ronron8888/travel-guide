@@ -4,13 +4,12 @@ var travel = window.travel = {
   dates: "2026.09.03 — 2026.09.04",
   overview: [
     { label: "行き先", value: "長瀞・川越" },
-    { label: "参加者", value: "ここに参加者" },
     { label: "集合", value: "11:00" },
     { label: "テーマ", value: "長瀞温泉と川越食べ歩きの旅" }
   ],
   schedule: [
     { time: "11:00", title: "集合", description: "集合時間 11:00。集合場所は確定後に入力", map: "https://www.google.com/maps" },
-    { time: "12:00", title: "ランチ", description: "12:00からランチ。川越のグルメ候補から選択", map: "https://www.google.com/maps" },
+    { time: "12:00", title: "ランチ", description: "12:00からランチ。", map: "https://www.google.com/maps" },
     { time: "13:00", title: "長瀞へ移動", description: "ランチ後、長瀞の花湯別邸へ移動", map: "https://www.google.com/maps" },
     { time: "15:00", title: "花湯別邸 チェックイン", description: "15:00〜 チェックイン。温泉・岩盤浴などを楽しむ", map: "https://www.google.com/maps" },
     { time: "18:00", title: "花湯別邸", description: "夕食・温泉・岩盤浴を楽しみながらゆっくり過ごす", map: "https://www.google.com/maps" },
@@ -24,7 +23,7 @@ var travel = window.travel = {
   food: [
     { name: "みっふぃーきっちん＆べーかりー", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/" },
     { name: "小江戸川越元町テラス 小江戸横丁店", note: "クロッフルや芋チップスなどのスイーツ", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace2/" },
-    { name: "小江戸川越元町テラス 本店", note: "菓子屋横丁近く。クロッフルや芋チップス、かき氷", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace/" },
+    { name: "小江戸川越元町テラス 本店", note: "菓子屋横丁近く。クロッフルや芋チップス、かき氷", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace2/" },
     { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://kawagoe.fun/magazine/gourmet/ebisuan/" },
     { name: "川越バターサンド", note: "川越いもなどを使ったバターサンド。お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-buttersand/" },
     { name: "抹茶あらた", note: "抹茶クレープや抹茶ラテなどの抹茶専門店", url: "https://kawagoe.fun/magazine/gourmet/arata/" },
