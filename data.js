@@ -25,7 +25,7 @@ var travel = window.travel = {
     { name: "みっふぃー蔵のきっちん＆べーかりー川越店", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/", image: null },
     { name: "小江戸川越 元町テラス", note: "芋チップスやクロッフルなどのスイーツ", url: "https://kawagoe-motomachi-terrace.com/", image: null },
     { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://www.instagram.com/ebisuan.222/", image: null },
-    { name: "川越バターサンド", note: "川越でチェックしたいバターサンド候補", url: "https://buttersand.com/", image: null },
+    { name: "川越バターサンド", note: "求肥とバタークリームを組み合わせた和洋折衷のバターサンド", url: "https://kawagoe-buttersand.com/", image: null },
     { name: "抹茶あらた", note: "狭山茶と抹茶を使ったドリンクや和スイーツ", url: "https://matcha-arata.jp/", image: null },
     { name: "リビスコ川越店", note: "毎朝、新鮮な牛乳と生の果物から作るジェラート", url: "https://libisco.com/", image: null },
     { name: "川越トリセイ", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: null },
