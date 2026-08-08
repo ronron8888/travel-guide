@@ -4,10 +4,11 @@ var travel = window.travel = {
   dates: "2026.09.03 — 2026.09.04",
   overview: [
     { label: "行き先", value: "長瀞・川越" },
-    { label: "集合", value: "11:00" },
+    { label: "集合", value: "10:30 熊谷駅 / 11:00" },
     { label: "テーマ", value: "長瀞温泉と川越食べ歩きの旅" }
   ],
   schedule: [
+    { time: "10:30", title: "一部メンバー集合", description: "一部メンバーは10:30に熊谷駅へ集合", map: "https://www.google.com/maps/search/?api=1&query=熊谷駅" },
     { time: "11:00", title: "集合", description: "集合時間 11:00。集合場所は確定後に入力", map: "https://www.google.com/maps" },
     { time: "12:00", title: "ランチ", description: "12:00からランチ。", map: "https://www.google.com/maps" },
     { time: "13:00", title: "長瀞へ移動", description: "ランチ後、長瀞の花湯別邸へ移動", map: "https://www.google.com/maps" },
