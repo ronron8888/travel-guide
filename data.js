@@ -1,7 +1,7 @@
 const travel = {
   eyebrow: "TRAVEL GUIDE",
-  title: "旅のしおり",
-  dates: "2026.00.00 — 2026.00.00",
+  title: "TRAVEL GUIDE",
+  dates: "2026.09.03 — 2026.09.04",
   overview: [
     { label: "行き先", value: "ここに行き先" },
     { label: "参加者", value: "ここに参加者" },
