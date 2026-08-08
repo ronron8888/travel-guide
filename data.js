@@ -1,4 +1,4 @@
-const travel = {
+var travel = window.travel = {
   eyebrow: "TRAVEL GUIDE",
   title: "TRAVEL GUIDE",
   dates: "2026.09.03 — 2026.09.04",
