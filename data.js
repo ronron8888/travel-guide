@@ -30,8 +30,8 @@ var travel = window.travel = {
     { name: "リビスコ川越店", note: "毎朝、新鮮な牛乳と生の果物から作るジェラート", url: "https://libisco.com/", image: null },
     { name: "小江戸釜めし 鳥清（とりせい）", note: "時の鐘すぐ近く。炊きたての釜めしと鶏料理が楽しめる", url: "https://www.instagram.com/kamameshi_torisei/", image: null },
     { name: "亀屋", note: "川越の老舗菓子店。公式サイトから商品・店舗情報を確認", url: "https://www.koedo-kameya.com/", image: null },
-    { name: "Mio Casalo", note: "川越の気になるグルメ候補", url: "https://www.google.com/search?q=Mio+Casalo+川越", image: null },
-    { name: "うし川", note: "川越の気になるグルメ候補", url: "https://www.google.com/search?q=うし川+川越", image: null }
+    { name: "Mio Casalo", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/421359/", image: null },
+    { name: "うし川", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/415669/", image: null }
   ],
   packing: [
     "スマートフォン・充電器",
