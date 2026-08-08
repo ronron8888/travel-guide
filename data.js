@@ -3,24 +3,34 @@ var travel = window.travel = {
   title: "TRAVEL GUIDE",
   dates: "2026.09.03 — 2026.09.04",
   overview: [
-    { label: "行き先", value: "長瀞・秩父" },
+    { label: "行き先", value: "川越・長瀞" },
     { label: "参加者", value: "ここに参加者" },
     { label: "集合", value: "集合場所・時間" },
-    { label: "テーマ", value: "温泉と長瀞を楽しむ旅" }
+    { label: "テーマ", value: "川越食べ歩きと長瀞温泉の旅" }
   ],
   schedule: [
     { time: "09:00", title: "集合", description: "集合場所・集合時間を入力", map: "https://www.google.com/maps" },
-    { time: "10:30", title: "観光スポット", description: "長瀞周辺を散策", map: "https://www.google.com/maps" },
-    { time: "12:30", title: "ランチ", description: "お店・予約時間などを入力", map: "https://www.google.com/maps" },
-    { time: "15:00", title: "花湯別邸へ", description: "秩父鉄道 野上駅から徒歩約10分。車の場合は花園ICから約25分。", map: "https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E6%B9%AF%E5%88%A5%E9%82%B8" },
-    { time: "18:00", title: "夕食・宿泊", description: "花湯別邸で夕食。宿泊料金には食事・ドリンク・岩盤浴などが含まれるオールインクルーシブ。", map: "https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E6%B9%AF%E5%88%A5%E9%82%B8" }
+    { time: "10:30", title: "川越 食べ歩き", description: "みっふぃーきっちん＆べーかりー、えびす庵など、気になるお店を巡る", map: "https://www.google.com/maps" },
+    { time: "12:30", title: "ランチ・カフェ", description: "元町テラス、抹茶あらた、川越の食べ歩き候補から気分に合わせて", map: "https://www.google.com/maps" },
+    { time: "15:00", title: "長瀞へ移動", description: "川越から宿泊先の花湯別邸へ", map: "https://www.google.com/maps" },
+    { time: "18:00", title: "花湯別邸", description: "チェックイン・夕食・温泉・岩盤浴を楽しむ", map: "https://www.google.com/maps" }
   ],
   stay: [
-    { name: "花湯別邸", note: "秩父長瀞温泉｜荒川を望む大人の隠れ癒し宿。チェックイン15:00（最終17:00）／チェックアウト10:00。大浴場・サウナ・岩盤浴・フリードリンクあり。", map: "https://www.google.com/maps/search/?api=1&query=%E8%8A%B1%E6%B9%AF%E5%88%A5%E9%82%B8" }
+    { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸" }
   ],
   food: [
-    { name: "花湯別邸の夕食", note: "埼玉県産食材や秩父の食材を使った創作料理。夕食は18:00。", url: "https://hanayu-bettei.com/dish/" },
-    { name: "花湯別邸の朝食", note: "秩父源流水を使ったご飯や焼きたてパン、地元野菜など。朝食は7:30。", url: "https://hanayu-bettei.com/dish/" }
+    { name: "みっふぃーきっちん＆べーかりー", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/" },
+    { name: "小江戸川越元町テラス 小江戸横丁店", note: "クロッフルや芋チップスなどのスイーツ", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace2/" },
+    { name: "小江戸川越元町テラス 本店", note: "菓子屋横丁近く。クロッフルや芋チップス、かき氷", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace/" },
+    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://kawagoe.fun/magazine/gourmet/ebisuan/" },
+    { name: "川越バターサンド", note: "川越いもなどを使ったバターサンド。お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-buttersand/" },
+    { name: "抹茶あらた", note: "抹茶クレープや抹茶ラテなどの抹茶専門店", url: "https://kawagoe.fun/magazine/gourmet/arata/" },
+    { name: "リビスコ川越店", note: "毎朝手作りの作りたてジェラート", url: "https://kawagoe.fun/magazine/gourmet/libisco/" },
+    { name: "川越トリセイ", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/" },
+    { name: "あらた", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/arata/" },
+    { name: "亀屋 菓子七", note: "気になる川越グルメ・お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kameya-kashichi/" },
+    { name: "川越の気になるスポット①", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/421359/" },
+    { name: "川越の気になるスポット②", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/415669/" }
   ],
   packing: [
     "スマートフォン・充電器",
@@ -30,8 +40,8 @@ var travel = window.travel = {
     "着替え・洗面用品"
   ],
   contacts: [
-    { label: "宿泊先", value: "花湯別邸 / 0494-69-0087" },
-    { label: "住所", value: "埼玉県秩父郡長瀞町本野上47-1" },
-    { label: "公式サイト", value: "https://hanayu-bettei.com/" }
+    { label: "幹事", value: "名前・連絡先" },
+    { label: "集合場所", value: "場所・住所" },
+    { label: "緊急時", value: "必要な連絡先" }
   ]
 };
