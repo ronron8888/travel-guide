@@ -19,18 +19,17 @@ var travel = window.travel = {
     { time: "—", title: "各自帰宅", description: "川越散策後、各自のタイミングで帰宅", map: "https://www.google.com/maps" }
   ],
   stay: [
-    { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00〜・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸" }
+    { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00〜・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸", url: "https://hanayu-bettei.com/" }
   ],
   food: [
     { name: "みっふぃー蔵のきっちん＆べーかりー川越店", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/", image: null },
-    { name: "小江戸川越元町テラス 本店", note: "菓子屋横丁すぐ近く。芋チップスやクロッフルを楽しむ", url: "https://kawagoe-motomachi-terrace.com/", image: null },
-    { name: "小江戸川越元町テラス 小江戸横丁店", note: "小江戸横丁でクロッフルや芋チップスなどをチェック", url: "https://kawagoe-motomachi-terrace.com/", image: null },
-    { name: "えびす庵", note: "蔵造りの街並みで、だし巻き玉子串などを食べ歩き", url: "https://www.instagram.com/ebisuan.222/", image: null },
-    { name: "川越バターサンド", note: "川越の素材を使った和洋折衷のバターサンド", url: "https://kawagoe-buttersand.com/", image: null },
-    { name: "抹茶あらた", note: "狭山茶・抹茶を使ったドリンクや和スイーツ", url: "https://matcha-arata.jp/", image: null },
-    { name: "リビスコ川越店", note: "毎朝手作りの生ジェラート専門店", url: "https://libisco.com/", image: null },
-    { name: "川越トリセイ", note: "気になる川越グルメ候補。公式サイトは確認できず", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: null },
-    { name: "亀屋", note: "1783年創業。川越を代表する老舗和菓子店", url: "https://www.koedo-kameya.com/", image: null },
+    { name: "小江戸川越 元町テラス", note: "芋チップスやクロッフルなどのスイーツ", url: "https://kawagoe-motomachi-terrace.com/", image: null },
+    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://www.instagram.com/ebisuan.222/", image: null },
+    { name: "川越バターサンド", note: "川越でチェックしたいバターサンド候補", url: "https://buttersand.com/", image: null },
+    { name: "抹茶あらた", note: "狭山茶と抹茶を使ったドリンクや和スイーツ", url: "https://matcha-arata.jp/", image: null },
+    { name: "リビスコ川越店", note: "毎朝、新鮮な牛乳と生の果物から作るジェラート", url: "https://libisco.com/", image: null },
+    { name: "川越トリセイ", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: null },
+    { name: "亀屋 菓子七", note: "気になる川越グルメ・お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kameya-kashichi/", image: null },
     { name: "川越の気になるスポット①", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/421359/", image: null },
     { name: "川越の気になるスポット②", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/415669/", image: null }
   ],
