@@ -5,18 +5,18 @@ var travel = window.travel = {
   overview: [
     { label: "行き先", value: "川越・長瀞" },
     { label: "参加者", value: "ここに参加者" },
-    { label: "集合", value: "集合場所・時間" },
+    { label: "集合", value: "11:00" },
     { label: "テーマ", value: "川越食べ歩きと長瀞温泉の旅" }
   ],
   schedule: [
-    { time: "09:00", title: "集合", description: "集合場所・集合時間を入力", map: "https://www.google.com/maps" },
-    { time: "10:30", title: "川越 食べ歩き", description: "みっふぃーきっちん＆べーかりー、えびす庵など、気になるお店を巡る", map: "https://www.google.com/maps" },
-    { time: "12:30", title: "ランチ・カフェ", description: "元町テラス、抹茶あらた、川越の食べ歩き候補から気分に合わせて", map: "https://www.google.com/maps" },
-    { time: "15:00", title: "長瀞へ移動", description: "川越から宿泊先の花湯別邸へ", map: "https://www.google.com/maps" },
-    { time: "18:00", title: "花湯別邸", description: "チェックイン・夕食・温泉・岩盤浴を楽しむ", map: "https://www.google.com/maps" }
+    { time: "11:00", title: "集合", description: "集合時間 11:00。集合場所は確定後に入力", map: "https://www.google.com/maps" },
+    { time: "12:00", title: "ランチ", description: "12:00からランチ。川越の気になるグルメ候補から選択", map: "https://www.google.com/maps" },
+    { time: "13:00", title: "川越 食べ歩き", description: "みっふぃーきっちん＆べーかりー、えびす庵など、気になるお店を巡る", map: "https://www.google.com/maps" },
+    { time: "15:00", title: "長瀞へ移動・チェックイン", description: "15:00〜 花湯別邸にチェックイン。温泉・岩盤浴などを楽しむ", map: "https://www.google.com/maps" },
+    { time: "18:00", title: "花湯別邸", description: "夕食・温泉・岩盤浴を楽しみながらゆっくり過ごす", map: "https://www.google.com/maps" }
   ],
   stay: [
-    { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸" }
+    { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00〜・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸" }
   ],
   food: [
     { name: "みっふぃーきっちん＆べーかりー", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/" },
