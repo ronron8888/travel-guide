@@ -1,36 +1,47 @@
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('is-visible');
-    revealObserver.unobserve(entry.target);
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+(() => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targets = [
+    '.section-head', '.section-title', '.intro-copy', '.facts', '.schedule',
+    '.schedule .item', '.spots', '.spots .spot', '.spot-image', '.stay-list',
+    '.stay-card', '.packing', '.manifesto', '.checklist', '.checklist .check',
+    '.contacts', '.contact', '.hero-image', '.footer'
+  ].join(',');
 
-function initScrollReveal() {
-  const staggerTargets = document.querySelectorAll('.facts, .schedule, .spots, .stay-list, .packing, .checklist, .contacts');
-  staggerTargets.forEach((el) => {
-    el.classList.add('reveal-stagger');
-    revealObserver.observe(el);
-  });
+  function initScrollReveal() {
+    const elements = [...document.querySelectorAll(targets)];
+    if (!elements.length) return;
 
-  document.querySelectorAll('.section-head, .section-title, .intro-copy, .manifesto, .stay-card, .contact').forEach((el) => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      elements.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
 
-  document.querySelectorAll('.spot-image, .hero-image').forEach((el) => {
-    el.classList.add('reveal-image');
-    revealObserver.observe(el);
-  });
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -10% 0px'
+    });
 
-  document.querySelectorAll('.schedule .item, .spots .spot, .checklist .check').forEach((el) => {
-    el.classList.add('reveal');
-    revealObserver.observe(el);
-  });
-}
+    elements.forEach((el) => {
+      if (el.matches('.facts, .schedule, .spots, .stay-list, .packing, .checklist, .contacts')) {
+        el.classList.add('reveal-stagger');
+      } else if (el.matches('.spot-image, .hero-image')) {
+        el.classList.add('reveal-image');
+      } else {
+        el.classList.add('reveal');
+      }
+      observer.observe(el);
+    });
+  }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initScrollReveal);
-} else {
-  initScrollReveal();
-}
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollReveal, { once: true });
+  } else {
+    initScrollReveal();
+  }
+})();
