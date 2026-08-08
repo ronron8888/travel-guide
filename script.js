@@ -18,8 +18,10 @@
       }
     });
 
+    const showAll = () => targets.forEach((el) => el.classList.add('is-visible'));
+
     if (reduceMotion || !('IntersectionObserver' in window)) {
-      targets.forEach((el) => el.classList.add('is-visible'));
+      showAll();
       return;
     }
 
@@ -30,10 +32,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.01,
-      rootMargin: '0px 0px -5% 0px'
-    });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
 
     targets.forEach((el) => observer.observe(el));
   }
