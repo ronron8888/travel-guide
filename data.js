@@ -22,18 +22,17 @@ var travel = window.travel = {
     { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00〜・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸" }
   ],
   food: [
-    { name: "みっふぃーきっちん＆べーかりー", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/" },
-    { name: "小江戸川越元町テラス 小江戸横丁店", note: "クロッフルや芋チップスなどのスイーツ", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace2/" },
-    { name: "小江戸川越元町テラス 本店", note: "菓子屋横丁近く。クロッフルや芋チップス、かき氷", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace2/" },
-    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://kawagoe.fun/magazine/gourmet/ebisuan/" },
-    { name: "川越バターサンド", note: "川越いもなどを使ったバターサンド。お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-buttersand/" },
-    { name: "抹茶あらた", note: "抹茶クレープや抹茶ラテなどの抹茶専門店", url: "https://kawagoe.fun/magazine/gourmet/arata/" },
-    { name: "リビスコ川越店", note: "毎朝手作りの作りたてジェラート", url: "https://kawagoe.fun/magazine/gourmet/libisco/" },
-    { name: "川越トリセイ", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/" },
-    { name: "あらた", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/arata/" },
-    { name: "亀屋 菓子七", note: "気になる川越グルメ・お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kameya-kashichi/" },
-    { name: "川越の気になるスポット①", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/421359/" },
-    { name: "川越の気になるスポット②", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/415669/" }
+    { name: "みっふぃーきっちん＆べーかりー", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/", image: "https://miffykitchenbakery.jp/wp-content/uploads/2024/04/miffy-kitchen-bakery.jpg" },
+    { name: "小江戸川越元町テラス 小江戸横丁店", note: "クロッフルや芋チップスなどのスイーツ", url: "https://kawagoe.fun/magazine/gourmet/motomachi-terrace2/", image: "https://kawagoe.fun/wp-content/uploads/2024/06/motomachi-terrace.jpg" },
+    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://kawagoe.fun/magazine/gourmet/ebisuan/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/ebisuan.jpg" },
+    { name: "川越バターサンド", note: "川越いもなどを使ったバターサンド。お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-buttersand/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/kawagoe-buttersand.jpg" },
+    { name: "抹茶あらた", note: "抹茶クレープや抹茶ラテなどの抹茶専門店", url: "https://kawagoe.fun/magazine/gourmet/arata/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/arata.jpg" },
+    { name: "リビスコ川越店", note: "毎朝手作りの作りたてジェラート", url: "https://kawagoe.fun/magazine/gourmet/libisco/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/libisco.jpg" },
+    { name: "川越トリセイ", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/kawagoe-torisei.jpg" },
+    { name: "あらた", note: "気になる川越グルメ候補", url: "https://kawagoe.fun/magazine/gourmet/arata/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/arata.jpg" },
+    { name: "亀屋 菓子七", note: "気になる川越グルメ・お土産候補", url: "https://kawagoe.fun/magazine/gourmet/kameya-kashichi/", image: "https://kawagoe.fun/wp-content/uploads/2024/05/kameya-kashichi.jpg" },
+    { name: "川越の気になるスポット①", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/421359/", image: "https://san-tatsu.jp/wp-content/uploads/2024/06/spot-421359.jpg" },
+    { name: "川越の気になるスポット②", note: "候補リストから詳細を確認", url: "https://san-tatsu.jp/spots/415669/", image: "https://san-tatsu.jp/wp-content/uploads/2024/06/spot-415669.jpg" }
   ],
   packing: [
     "スマートフォン・充電器",
