@@ -64,7 +64,10 @@ var travel = window.travel = {
     schedule.dataset.daysApplied = 'true';
   };
   const style = document.createElement('style');
-  style.textContent = `.trip-day-heading{display:grid;grid-template-columns:110px 1fr;gap:25px;align-items:end;padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-top:18px;opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.trip-day-heading.is-visible{opacity:1;transform:none}.trip-day-number{font-size:10px;font-weight:800;letter-spacing:.18em}.trip-day-title{font-size:clamp(2rem,4vw,4rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.trip-day-sub{font-size:10px;color:var(--sub);letter-spacing:.1em;margin-top:8px}@media(max-width:700px){.trip-day-heading{grid-template-columns:1fr;gap:8px;padding:28px 0 16px}.trip-day-title{font-size:2.5rem}}`;
+  style.textContent = `.trip-day-heading{display:grid;grid-template-columns:110px 1fr;gap:25px;align-items:end;padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-top:18px;opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.trip-day-heading.is-visible{opacity:1;transform:none}.trip-day-number{font-size:10px;font-weight:800;letter-spacing:.18em}.trip-day-title{font-size:clamp(2rem,4vw,4rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.trip-day-sub{font-size:10px;color:var(--sub);letter-spacing:.1em;margin-top:8px}@media(max-width:700px){.trip-day-heading{grid-template-columns:1fr;gap:8px;padding:28px 0 16px}.trip-day-title{font-size:2.5rem}}
+.hero-image{height:auto!important;min-height:0!important;aspect-ratio:3/1!important;background-size:50% 100%,50% 100%!important;background-position:left center,right center!important;background-repeat:no-repeat!important}
+@media(max-width:700px){.hero-image{aspect-ratio:3/4!important;background-size:100% 50%,100% 50%!important;background-position:center top,center bottom!important}}
+`;
   document.head.appendChild(style);
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyTripLayout, { once:true }); else applyTripLayout();
   window.setTimeout(applyTripLayout, 200);
@@ -82,7 +85,7 @@ var travel = window.travel = {
     hero.style.backgroundPosition = 'left center, right center';
     hero.style.backgroundRepeat = 'no-repeat';
     const responsive = document.createElement('style');
-    responsive.textContent = `.hero-image{background-color:#ddd}@media(max-width:700px){.hero-image{background-size:100% 50%,100% 50%;background-position:center top,center bottom;background-repeat:no-repeat}}`;
+    responsive.textContent = `.hero-image{background-color:#ddd}`;
     document.head.appendChild(responsive);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
