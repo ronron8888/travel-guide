@@ -70,3 +70,12 @@ var travel = window.travel = {
   window.setTimeout(applyTripLayout, 200);
   window.setTimeout(applyTripLayout, 800);
 })();
+
+// Uploaded Kawagoe street photo as the top hero image.
+(() => {
+  const applyHero = () => {
+    const hero = document.querySelector('.hero-image');
+    if (hero) hero.style.backgroundImage = "linear-gradient(135deg,rgba(216,216,211,.05),rgba(236,236,231,.05)), url('assets/hero-kawagoe.svg')";
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
+})();
