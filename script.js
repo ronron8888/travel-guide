@@ -2,8 +2,8 @@
   const init = () => {
     const foodGrid = document.getElementById('foodGrid');
 
-    // Food cards: use a live screenshot of each source page so the cards always have
-    // a real image without relying on guessed/unstable image-file URLs.
+    // Food cards: use supplied local photos when available; otherwise use a live
+    // screenshot of the source page. This keeps the cards usable for both cases.
     if (foodGrid && window.travel?.food) {
       const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (m) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '\"':'&quot;', "'":'&#039;' }[m]));
       const screenshot = (url) => url
@@ -14,7 +14,7 @@
       foodGrid.classList.remove('spots');
       foodGrid.classList.add('food-grid');
       foodGrid.innerHTML = travel.food.map((item) => {
-        const image = screenshot(item.url);
+        const image = item.image || screenshot(item.url);
         return `
         <article class="food-card reveal">
           <a class="food-card-link" href="${esc(item.url || '#')}" target="_blank" rel="noopener noreferrer">
