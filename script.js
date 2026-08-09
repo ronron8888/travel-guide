@@ -61,7 +61,7 @@
       .food-card:hover{transform:translateY(-5px)!important;border-color:var(--ink);box-shadow:0 18px 34px rgba(17,17,17,.10)}
       .food-card-link{display:block;text-decoration:none;color:inherit;height:100%}
       .food-card-image-wrap{aspect-ratio:1.18/1;overflow:hidden;background:linear-gradient(135deg,#d6d6d1,#ededeb)}
-      .food-card-image{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease),filter .8s var(--ease)}
+      .food-card-image{display:block;width:100%;height:100%;object-fit:cover;image-rendering:auto;transition:transform .8s var(--ease),filter .8s var(--ease)}
       .food-card:hover .food-card-image{transform:scale(1.055);filter:saturate(1.06) contrast(1.02)}
       .food-card-body{padding:18px 18px 20px}
       .food-card-name{font-size:21px;line-height:1.25;letter-spacing:-.035em;margin:8px 0 7px;font-weight:800}
@@ -135,4 +135,21 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once:true });
   else init();
+})();
+
+// Keep the four supplied photo cards from being enlarged beyond a reasonable display size.
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .food-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important}
+    .food-card:nth-child(3n+2),.food-card:nth-child(3n+3){transform:none}
+    .food-card:nth-child(4n+2){transform:translateY(24px)}
+    .food-card:nth-child(4n+3){transform:translateY(44px)}
+    .food-card:nth-child(4n+4){transform:translateY(68px)}
+    .food-card-image-wrap{aspect-ratio:1.3/1}
+    .food-card-image{max-width:100%;max-height:100%;image-rendering:auto}
+    @media(max-width:1100px){.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.food-card:nth-child(4n+2),.food-card:nth-child(4n+3),.food-card:nth-child(4n+4){transform:none}.food-card:nth-child(even){transform:translateY(24px)}}
+    @media(max-width:700px){.food-grid{grid-template-columns:1fr!important}.food-card:nth-child(even){transform:none}}
+  `;
+  document.head.appendChild(style);
 })();
