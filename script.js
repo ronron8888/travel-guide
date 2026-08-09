@@ -89,50 +89,25 @@
     ));
 
     if (!targets.length) return;
-
     const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     targets.forEach((el) => {
-      if (el.matches('.facts, .schedule, .spots, .stay-list, .packing, .checklist, .contacts')) {
-        el.classList.add('reveal-stagger');
-      } else if (el.matches('.spot-image, .hero-image, .stay-image-wrap')) {
-        el.classList.add('reveal-image');
-      } else if (!el.classList.contains('reveal')) {
-        el.classList.add('reveal');
-      }
+      if (el.matches('.facts, .schedule, .spots, .stay-list, .packing, .checklist, .contacts')) el.classList.add('reveal-stagger');
+      else if (el.matches('.spot-image, .hero-image, .stay-image-wrap')) el.classList.add('reveal-image');
+      else if (!el.classList.contains('reveal')) el.classList.add('reveal');
     });
-
-    if (reduced) {
-      targets.forEach((el) => el.classList.add('is-visible'));
-      return;
-    }
-
+    if (reduced) { targets.forEach((el) => el.classList.add('is-visible')); return; }
     const reveal = () => {
       const viewport = window.innerHeight || document.documentElement.clientHeight;
-      targets.forEach((el) => {
-        if (el.classList.contains('is-visible')) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top < viewport * 0.92 && rect.bottom > 0) el.classList.add('is-visible');
-      });
+      targets.forEach((el) => { if (el.classList.contains('is-visible')) return; const rect = el.getBoundingClientRect(); if (rect.top < viewport * 0.92 && rect.bottom > 0) el.classList.add('is-visible'); });
     };
-
     let ticking = false;
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(() => { reveal(); ticking = false; });
-    };
-
+    const onScroll = () => { if (ticking) return; ticking = true; window.requestAnimationFrame(() => { reveal(); ticking = false; }); };
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', reveal, { passive: true });
     window.addEventListener('orientationchange', reveal, { passive: true });
-    reveal();
-    window.setTimeout(reveal, 150);
-    window.setTimeout(reveal, 600);
+    reveal(); window.setTimeout(reveal, 150); window.setTimeout(reveal, 600);
   };
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once:true });
-  else init();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once:true }); else init();
 })();
 
 (() => {
@@ -151,15 +126,15 @@
   document.head.appendChild(style);
 })();
 
-// Final hero override: use one Hanayu Bettei image only.
+// Use the supplied Hanayu Bettei exterior as the single hero image.
 (() => {
   const applyHero = () => {
     const hero = document.querySelector('.hero-image');
     if (!hero) return;
-    const image = 'https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602';
+    const image = 'https://local-best.jp/wp-content/themes/localbest/images/detail/jp/ho/ref/saitama/ja_Y381064138.webp?v=20260810';
     hero.style.setProperty('background-image', `url("${image}")`, 'important');
     hero.style.setProperty('background-size', 'cover', 'important');
-    hero.style.setProperty('background-position', 'center', 'important');
+    hero.style.setProperty('background-position', 'center center', 'important');
     hero.style.setProperty('background-repeat', 'no-repeat', 'important');
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
