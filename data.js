@@ -71,11 +71,15 @@ var travel = window.travel = {
   window.setTimeout(applyTripLayout, 800);
 })();
 
-// Uploaded Kawagoe street photo as the top hero image.
+// Two-image hero: Hanayu Bettei for day 1 + Kawagoe for day 2.
 (() => {
   const applyHero = () => {
     const hero = document.querySelector('.hero-image');
-    if (hero) hero.style.backgroundImage = "linear-gradient(135deg,rgba(216,216,211,.05),rgba(236,236,231,.05)), url('assets/hero-kawagoe.svg')";
+    if (!hero) return;
+    hero.style.backgroundImage = "linear-gradient(180deg,rgba(17,17,17,.03),rgba(17,17,17,.12)),url('https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602'),url('assets/hero-kawagoe.svg?v=20260809')";
+    hero.style.backgroundSize = '50% 100%, 50% 100%';
+    hero.style.backgroundPosition = 'left center, right center';
+    hero.style.backgroundRepeat = 'no-repeat';
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
 })();
