@@ -24,14 +24,14 @@ var travel = window.travel = {
   food: [
     { name: "みっふぃー蔵のきっちん＆べーかりー川越店", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/", image: null },
     { name: "小江戸川越 元町テラス", note: "芋チップスやクロッフルなどのスイーツ", url: "https://kawagoe-motomachi-terrace.com/", image: null },
-    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://www.instagram.com/ebisuan.222/", image: null },
+    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://www.instagram.com/ebisuan.222/", image: "assets/food/ebisuan.jpg" },
     { name: "川越バターサンド", note: "川越でチェックしたいバターサンド候補", url: "https://kawagoe-buttersand.com/", image: null },
     { name: "抹茶あらた", note: "狭山茶と抹茶を使ったドリンクや和スイーツ", url: "https://matcha-arata.jp/", image: null },
     { name: "リビスコ川越店", note: "毎朝、新鮮な牛乳と生の果物から作るジェラート", url: "https://libisco.com/", image: null },
-    { name: "小江戸釜めし 鳥清（とりせい）", note: "時の鐘すぐ近く。炊きたての釜めしと鶏料理が楽しめる", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: null },
+    { name: "小江戸釜めし 鳥清（とりせい）", note: "時の鐘すぐ近く。炊きたての釜めしと鶏料理が楽しめる", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: "assets/food/torisei.jpg" },
     { name: "亀屋", note: "川越の老舗菓子店。公式サイトから商品・店舗情報を確認", url: "https://www.koedo-kameya.com/", image: null },
-    { name: "Mio Casalo", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/421359/", image: null },
-    { name: "うし川", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/415669/", image: null }
+    { name: "Mio Casalo", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/421359/", image: "assets/food/mio-casalo.jpg" },
+    { name: "うし川", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/415669/", image: "assets/food/ushikawa.jpg" }
   ],
   packing: [
     "スマートフォン・充電器",
