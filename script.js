@@ -7,7 +7,6 @@
     const fallbackImage = 'https://koedo.or.jp/wp-content/uploads/018499d5096841e2ac350b62fa6c2fee-scaled.jpg';
     const screenshot = (url) => url ? `https://image.thum.io/get/width/1200/crop/800/noanimate/${url}` : fallbackImage;
 
-    // Food cards: supplied photos are preferred; otherwise use a screenshot of the linked page.
     if (foodGrid && window.travel?.food) {
       foodGrid.classList.remove('spots');
       foodGrid.classList.add('food-grid');
@@ -30,7 +29,6 @@
       }).join('');
     }
 
-    // Stay card: render the accommodation image from the official Hanayu Bettei site.
     if (stayList && window.travel?.stay?.length) {
       stayList.innerHTML = travel.stay.map((item) => {
         const image = item.image || screenshot('https://hanayu-bettei.com/');
@@ -137,7 +135,6 @@
   else init();
 })();
 
-// Keep the four supplied photo cards from being enlarged beyond a reasonable display size.
 (() => {
   const style = document.createElement('style');
   style.textContent = `
@@ -152,4 +149,20 @@
     @media(max-width:700px){.food-grid{grid-template-columns:1fr!important}.food-card:nth-child(even){transform:none}}
   `;
   document.head.appendChild(style);
+})();
+
+// Final hero override: use one Hanayu Bettei image only.
+(() => {
+  const applyHero = () => {
+    const hero = document.querySelector('.hero-image');
+    if (!hero) return;
+    const image = 'https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602';
+    hero.style.setProperty('background-image', `url("${image}")`, 'important');
+    hero.style.setProperty('background-size', 'cover', 'important');
+    hero.style.setProperty('background-position', 'center', 'important');
+    hero.style.setProperty('background-repeat', 'no-repeat', 'important');
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
+  window.setTimeout(applyHero, 100);
+  window.setTimeout(applyHero, 500);
 })();
