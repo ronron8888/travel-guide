@@ -40,9 +40,33 @@ var travel = window.travel = {
     "モバイルバッテリー",
     "着替え・洗面用品"
   ],
-  contacts: [
-    { label: "幹事", value: "名前・連絡先" },
-    { label: "集合場所", value: "場所・住所" },
-    { label: "緊急時", value: "必要な連絡先" }
-  ]
+  contacts: []
 };
+
+(() => {
+  const applyTripLayout = () => {
+    const schedule = document.getElementById('scheduleList');
+    const contactSection = document.getElementById('contact');
+    const contactNav = document.querySelector('.nav a[href="#contact"]');
+    if (contactNav) contactNav.remove();
+    if (contactSection) contactSection.remove();
+    if (!schedule || schedule.dataset.daysApplied === 'true') return;
+    const items = Array.from(schedule.querySelectorAll('.item'));
+    if (!items.length) return;
+    const makeHeading = (number, title, sub) => {
+      const heading = document.createElement('div');
+      heading.className = 'trip-day-heading reveal';
+      heading.innerHTML = `<div class="trip-day-number">DAY ${number}</div><div><div class="trip-day-title">${title}</div><div class="trip-day-sub">${sub}</div></div>`;
+      return heading;
+    };
+    if (items[0]) schedule.insertBefore(makeHeading('01', '長瀞・花湯別邸', '2026.09.03 / 1日目'), items[0]);
+    if (items[6]) schedule.insertBefore(makeHeading('02', '川越散策', '2026.09.04 / 2日目・各自帰宅'), items[6]);
+    schedule.dataset.daysApplied = 'true';
+  };
+  const style = document.createElement('style');
+  style.textContent = `.trip-day-heading{display:grid;grid-template-columns:110px 1fr;gap:25px;align-items:end;padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-top:18px;opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.trip-day-heading.is-visible{opacity:1;transform:none}.trip-day-number{font-size:10px;font-weight:800;letter-spacing:.18em}.trip-day-title{font-size:clamp(2rem,4vw,4rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.trip-day-sub{font-size:10px;color:var(--sub);letter-spacing:.1em;margin-top:8px}@media(max-width:700px){.trip-day-heading{grid-template-columns:1fr;gap:8px;padding:28px 0 16px}.trip-day-title{font-size:2.5rem}}`;
+  document.head.appendChild(style);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyTripLayout, { once:true }); else applyTripLayout();
+  window.setTimeout(applyTripLayout, 200);
+  window.setTimeout(applyTripLayout, 800);
+})();
