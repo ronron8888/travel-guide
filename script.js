@@ -1,16 +1,14 @@
 (() => {
   const init = () => {
     const foodGrid = document.getElementById('foodGrid');
+    const stayList = document.querySelector('.stay-list');
 
-    // Food cards: use supplied local photos when available; otherwise use a live
-    // screenshot of the source page. This keeps the cards usable for both cases.
+    const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (m) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '\"':'&quot;', "'":'&#039;' }[m]));
+    const fallbackImage = 'https://koedo.or.jp/wp-content/uploads/018499d5096841e2ac350b62fa6c2fee-scaled.jpg';
+    const screenshot = (url) => url ? `https://image.thum.io/get/width/1200/crop/800/noanimate/${url}` : fallbackImage;
+
+    // Food cards: supplied photos are preferred; otherwise use a screenshot of the linked page.
     if (foodGrid && window.travel?.food) {
-      const esc = (value) => String(value ?? '').replace(/[&<>\"']/g, (m) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '\"':'&quot;', "'":'&#039;' }[m]));
-      const screenshot = (url) => url
-        ? `https://image.thum.io/get/width/900/crop/650/noanimate/${url}`
-        : 'https://koedo.or.jp/wp-content/uploads/018499d5096841e2ac350b62fa6c2fee-scaled.jpg';
-      const fallbackImage = 'https://koedo.or.jp/wp-content/uploads/018499d5096841e2ac350b62fa6c2fee-scaled.jpg';
-
       foodGrid.classList.remove('spots');
       foodGrid.classList.add('food-grid');
       foodGrid.innerHTML = travel.food.map((item) => {
@@ -32,6 +30,28 @@
       }).join('');
     }
 
+    // Stay card: render the accommodation image from the official Hanayu Bettei site.
+    if (stayList && window.travel?.stay?.length) {
+      stayList.innerHTML = travel.stay.map((item) => {
+        const image = item.image || screenshot('https://hanayu-bettei.com/');
+        return `
+        <article class="stay-card stay-card-with-image reveal">
+          <a class="stay-card-link" href="${esc(item.url || '#')}" target="_blank" rel="noopener noreferrer">
+            <div class="stay-image-wrap">
+              <img class="stay-image" src="${esc(image)}" alt="${esc(item.name)}" loading="lazy" decoding="async">
+            </div>
+            <div class="stay-card-content">
+              <div class="eyebrow">ACCOMMODATION</div>
+              <h3 class="stay-name">${esc(item.name)}</h3>
+              <p class="spot-note">${esc(item.note)}</p>
+              <span class="link">OFFICIAL SITE</span>
+            </div>
+          </a>
+        </article>`;
+      }).join('');
+      stayList.classList.add('stay-list-with-image');
+    }
+
     const style = document.createElement('style');
     style.textContent = `
       .food-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:0;align-items:start}
@@ -50,14 +70,24 @@
       .food-card-detail span{transition:transform .35s var(--ease)}
       .food-card:hover .food-card-detail{padding:3px 7px;background:var(--accent)}
       .food-card:hover .food-card-detail span{transform:translate(3px,-3px)}
-      @media(max-width:900px){.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.food-card:nth-child(3n+2),.food-card:nth-child(3n+3){transform:none}.food-card:nth-child(2n){transform:translateY(24px)}.food-card:hover{transform:translateY(-5px)!important}}
-      @media(max-width:700px){.food-grid{grid-template-columns:1fr;gap:24px}.food-card:nth-child(2n){transform:none}.food-card-image-wrap{aspect-ratio:1.3/1}.food-card-body{padding:16px 16px 18px}.food-card-name{font-size:20px}.food-card-note{min-height:0}}
-      @media(hover:none){.food-card:hover{transform:none!important;box-shadow:none}.food-card:hover .food-card-image{transform:none;filter:none}.food-card:hover .food-card-detail{padding-bottom:3px;background:transparent}.food-card:hover .food-card-detail span{transform:none}}
+
+      .stay-list-with-image{display:grid!important;grid-template-columns:1fr!important;gap:1px!important;background:var(--ink)}
+      .stay-card-with-image{padding:0!important;min-height:0!important;overflow:hidden;background:var(--bg)}
+      .stay-card-link{display:grid;grid-template-columns:minmax(300px,46%) 1fr;color:inherit;text-decoration:none;min-height:300px}
+      .stay-image-wrap{min-height:300px;overflow:hidden;background:#ddd}
+      .stay-image{display:block;width:100%;height:100%;min-height:300px;object-fit:cover;transition:transform .8s var(--ease),filter .8s var(--ease)}
+      .stay-card-with-image:hover .stay-image{transform:scale(1.035);filter:saturate(1.04)}
+      .stay-card-content{padding:38px;display:flex;flex-direction:column;justify-content:center}
+      .stay-card-with-image:hover .stay-name{transform:translateX(5px)}
+      .stay-card-with-image .spot-note{max-width:680px}
+      @media(max-width:900px){.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.food-card:nth-child(3n+2),.food-card:nth-child(3n+3){transform:none}.food-card:nth-child(2n){transform:translateY(24px)}.food-card:hover{transform:translateY(-5px)!important}.stay-card-link{grid-template-columns:1fr}.stay-image-wrap,.stay-image{min-height:260px;height:260px}.stay-card-content{padding:28px}}
+      @media(max-width:700px){.food-grid{grid-template-columns:1fr;gap:24px}.food-card:nth-child(2n){transform:none}.food-card-image-wrap{aspect-ratio:1.3/1}.food-card-body{padding:16px 16px 18px}.food-card-name{font-size:20px}.food-card-note{min-height:0}.stay-image-wrap,.stay-image{min-height:220px;height:220px}.stay-card-content{padding:22px 20px}}
+      @media(hover:none){.food-card:hover{transform:none!important;box-shadow:none}.food-card:hover .food-card-image,.stay-card-with-image:hover .stay-image{transform:none;filter:none}.food-card:hover .food-card-detail{padding-bottom:3px;background:transparent}.food-card:hover .food-card-detail span{transform:none}}
     `;
     document.head.appendChild(style);
 
     const targets = Array.from(document.querySelectorAll(
-      '.section-head, .section-title, .intro-copy, .facts, .schedule, .schedule .item, .spots, .spots .spot, .spot-image, .food-card, .stay-list, .stay-card, .packing, .manifesto, .checklist, .checklist .check, .contacts, .contact, .hero-image, .footer'
+      '.section-head, .section-title, .intro-copy, .facts, .schedule, .schedule .item, .spots, .spots .spot, .spot-image, .food-card, .stay-list, .stay-card, .stay-image-wrap, .packing, .manifesto, .checklist, .checklist .check, .contacts, .contact, .hero-image, .footer'
     ));
 
     if (!targets.length) return;
@@ -67,7 +97,7 @@
     targets.forEach((el) => {
       if (el.matches('.facts, .schedule, .spots, .stay-list, .packing, .checklist, .contacts')) {
         el.classList.add('reveal-stagger');
-      } else if (el.matches('.spot-image, .hero-image')) {
+      } else if (el.matches('.spot-image, .hero-image, .stay-image-wrap')) {
         el.classList.add('reveal-image');
       } else if (!el.classList.contains('reveal')) {
         el.classList.add('reveal');
