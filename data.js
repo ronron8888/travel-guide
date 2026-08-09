@@ -76,10 +76,13 @@ var travel = window.travel = {
   const applyHero = () => {
     const hero = document.querySelector('.hero-image');
     if (!hero) return;
-    hero.style.backgroundImage = "linear-gradient(180deg,rgba(17,17,17,.03),rgba(17,17,17,.12)),url('https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602'),url('assets/hero-kawagoe.svg?v=20260809')";
+    hero.style.backgroundImage = "url('https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602'),url('assets/hero-kawagoe.svg?v=20260809')";
     hero.style.backgroundSize = '50% 100%, 50% 100%';
     hero.style.backgroundPosition = 'left center, right center';
     hero.style.backgroundRepeat = 'no-repeat';
+    const responsive = document.createElement('style');
+    responsive.textContent = `.hero-image{background-color:#ddd}@media(max-width:700px){.hero-image{background-size:100% 50%,100% 50%;background-position:center top,center bottom;background-repeat:no-repeat}}`;
+    document.head.appendChild(responsive);
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
 })();
