@@ -103,14 +103,38 @@ var travel = window.travel = {
         map.append(label, pin);
       }
     });
-
-    document.querySelectorAll('#foodGrid .food-card-detail').forEach((detail) => {
-      if (!detail.dataset.mapReady) return;
-      const pin = detail.querySelector('.spot-map-icon');
-      if (!pin) return;
-      detail.childNodes.forEach((node) => { if (node.nodeType === Node.TEXT_NODE) node.textContent = node.textContent.replace(/↗/g,'').trim() + ' '; });
-    });
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', patchMaps, { once:true }); else patchMaps();
   [150,500,1000,1800].forEach((ms) => window.setTimeout(patchMaps, ms));
+})();
+
+// SPOTS MAP links: add a consistent MAP + pin control beneath DETAILS for every spot with a map URL.
+(() => {
+  const addSpotMaps = () => {
+    const cards = document.querySelectorAll('#foodGrid .spot, #foodGrid .food-card');
+    if (!cards.length || !window.travel?.food) return;
+    cards.forEach((card, index) => {
+      const data = travel.food[index];
+      if (!data?.map || card.querySelector('.spot-map-link')) return;
+      const link = document.createElement('a');
+      link.className = 'spot-map-link map-refined';
+      link.href = data.map;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.setAttribute('aria-label', `${data.name}のMAPを開く`);
+      link.innerHTML = '<span>MAP</span><span class="spot-map-icon" aria-hidden="true">⌖</span>';
+      const detail = card.querySelector('.link, .food-card-detail');
+      (detail || card.lastElementChild || card).insertAdjacentElement('afterend', link);
+    });
+  };
+  const style = document.createElement('style');
+  style.textContent = `
+    .spot-map-link{display:inline-flex!important;align-items:center!important;gap:8px!important;margin-top:12px!important;padding:4px 8px 4px 11px!important;border:0!important;border-radius:999px!important;font-size:11px!important;font-weight:800!important;letter-spacing:.16em!important;line-height:1!important;text-decoration:none!important;transition:background .35s var(--ease),transform .35s var(--ease)!important}
+    .spot-map-link .spot-map-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:21px!important;height:21px!important;font-size:21px!important;line-height:1!important;letter-spacing:0!important;transition:transform .35s var(--ease)!important}
+    .spot-map-link:hover{background:var(--accent)!important;transform:translateX(2px)!important}.spot-map-link:hover .spot-map-icon{transform:translateY(-2px)!important}
+    @media(max-width:700px){.spot-map-link{font-size:11px!important;padding:5px 8px 5px 10px!important}.spot-map-link .spot-map-icon{width:22px!important;height:22px!important;font-size:22px!important}}
+  `;
+  document.head.appendChild(style);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addSpotMaps, { once:true }); else addSpotMaps();
+  [150,500,1000,1800].forEach((ms) => window.setTimeout(addSpotMaps, ms));
 })();
