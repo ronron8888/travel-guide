@@ -15,7 +15,7 @@ var travel = window.travel = {
     { time: "15:00", title: "花湯別邸 チェックイン", description: "15:00〜 チェックイン。温泉・岩盤浴などを楽しむ" },
     { time: "18:00", title: "花湯別邸", description: "夕食・温泉・岩盤浴を楽しみながらゆっくり過ごす" },
     { time: "10:00", title: "チェックアウト", description: "花湯別邸をチェックアウト。2日目は川越へ移動", map: "https://www.google.com/maps/search/?api=1&query=川越駅" },
-    { time: "11:00", title: "2日目・川越散策", description: "川越で食べ歩き・お土産探し。気になるスポットを自由に巡る", map: "https://www.google.com/maps/search/?api=1&query=川越" },
+    { time: "11:00", title: "2日目・川越散策", description: "川越の一番街・蔵造りの町並み周辺で食べ歩き・お土産探し。気になるスポットを自由に巡る", map: "https://www.google.com/maps/search/?api=1&query=川越一番街+蔵造りの町並み" },
     { time: "—", title: "各自帰宅", description: "川越散策後、各自のタイミングで帰宅" }
   ],
   stay: [
