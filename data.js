@@ -47,94 +47,50 @@ var travel = window.travel = {
     if (!schedule || schedule.dataset.daysApplied === 'true') return;
     const items = Array.from(schedule.querySelectorAll('.item'));
     if (!items.length) return;
-    const makeHeading = (number, title, sub) => {
-      const heading = document.createElement('div');
-      heading.className = 'trip-day-heading reveal';
-      heading.innerHTML = `<div class="trip-day-number">DAY ${number}</div><div><div class="trip-day-title">${title}</div><div class="trip-day-sub">${sub}</div></div>`;
-      return heading;
-    };
-    if (items[0]) schedule.insertBefore(makeHeading('01', '長瀞・花湯別邸', '2026.09.03 / 1日目'), items[0]);
-    if (items[6]) schedule.insertBefore(makeHeading('02', '川越散策', '2026.09.04 / 2日目・各自帰宅'), items[6]);
-    schedule.dataset.daysApplied = 'true';
+    const makeHeading = (number, title, sub) => { const heading = document.createElement('div'); heading.className='trip-day-heading reveal'; heading.innerHTML=`<div class="trip-day-number">DAY ${number}</div><div><div class="trip-day-title">${title}</div><div class="trip-day-sub">${sub}</div></div>`; return heading; };
+    if (items[0]) schedule.insertBefore(makeHeading('01','長瀞・花湯別邸','2026.09.03 / 1日目'),items[0]);
+    if (items[6]) schedule.insertBefore(makeHeading('02','川越散策','2026.09.04 / 2日目・各自帰宅'),items[6]);
+    schedule.dataset.daysApplied='true';
   };
-  const style = document.createElement('style');
-  style.textContent = `.trip-day-heading{display:grid;grid-template-columns:110px 1fr;gap:25px;align-items:end;padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-top:18px;opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.trip-day-heading.is-visible{opacity:1;transform:none}.trip-day-number{font-size:10px;font-weight:800;letter-spacing:.18em}.trip-day-title{font-size:clamp(2rem,4vw,4rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.trip-day-sub{font-size:10px;color:var(--sub);letter-spacing:.1em;margin-top:8px}@media(max-width:700px){.trip-day-heading{grid-template-columns:1fr;gap:8px;padding:28px 0 16px}.trip-day-title{font-size:2.5rem}}.hero-image{height:auto!important;min-height:0!important;aspect-ratio:16/7!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}`;
+  const style=document.createElement('style');
+  style.textContent=`.trip-day-heading{display:grid;grid-template-columns:110px 1fr;gap:25px;align-items:end;padding:34px 0 18px;border-bottom:2px solid var(--ink);margin-top:18px;opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}.trip-day-heading.is-visible{opacity:1;transform:none}.trip-day-number{font-size:10px;font-weight:800;letter-spacing:.18em}.trip-day-title{font-size:clamp(2rem,4vw,4rem);font-weight:900;letter-spacing:-.07em;line-height:.9}.trip-day-sub{font-size:10px;color:var(--sub);letter-spacing:.1em;margin-top:8px}@media(max-width:700px){.trip-day-heading{grid-template-columns:1fr;gap:8px;padding:28px 0 16px}.trip-day-title{font-size:2.5rem}}.hero-image{height:auto!important;min-height:0!important;aspect-ratio:16/7!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}`;
   document.head.appendChild(style);
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyTripLayout, { once:true }); else applyTripLayout();
-  window.setTimeout(applyTripLayout, 200); window.setTimeout(applyTripLayout, 800);
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',applyTripLayout,{once:true}); else applyTripLayout();
+  window.setTimeout(applyTripLayout,200);window.setTimeout(applyTripLayout,800);
 })();
 
 (() => {
-  const applyHero = () => {
-    const hero = document.querySelector('.hero-image'); if (!hero) return;
-    const image = "url('https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602')";
-    hero.style.setProperty('background-image', image, 'important'); hero.style.setProperty('background-size','cover','important'); hero.style.setProperty('background-position','center','important'); hero.style.setProperty('background-repeat','no-repeat','important');
-  };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
+  const applyHero=()=>{const hero=document.querySelector('.hero-image');if(!hero)return;const image="url('https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602')";hero.style.setProperty('background-image',image,'important');hero.style.setProperty('background-size','cover','important');hero.style.setProperty('background-position','center','important');hero.style.setProperty('background-repeat','no-repeat','important')};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyHero,{once:true});else applyHero();
 })();
 
-// Final MAP presentation: PLAN and SPOTS use the same larger MAP label + pin icon.
+// Unified, refined MAP pill for PLAN and SPOTS.
 (() => {
-  const patchMaps = () => {
-    const style = document.createElement('style');
-    style.textContent = `
-      .schedule .map::before,.schedule .map::after{content:none!important;display:none!important}
-      .schedule .map,.map.map-refined{display:inline-flex!important;align-items:center!important;gap:8px!important;min-height:34px!important;padding:4px 8px 4px 11px!important;border:0!important;border-radius:999px!important;font-size:11px!important;font-weight:800!important;letter-spacing:.16em!important;line-height:1!important;text-decoration:none!important;text-align:left!important;transition:background .35s var(--ease),transform .35s var(--ease),padding .35s var(--ease)!important}
-      .schedule .map .map-pin,.map.map-refined .map-pin{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:21px!important;height:21px!important;font-size:21px!important;line-height:1!important;letter-spacing:0!important;transition:transform .35s var(--ease)!important}
-      .schedule .map:hover,.map.map-refined:hover{background:var(--accent)!important;transform:translateX(2px)!important;padding-left:13px!important}
-      .schedule .map:hover .map-pin,.map.map-refined:hover .map-pin{transform:translateY(-2px)!important}
-      #foodGrid .food-card-detail{align-items:center!important;gap:8px!important;font-size:11px!important;font-weight:800!important;line-height:1!important}
-      #foodGrid .food-card-detail .spot-map-icon{width:21px!important;height:21px!important;font-size:21px!important;line-height:1!important}
-      @media(max-width:700px){.schedule .map,.map.map-refined{min-height:36px!important;font-size:11px!important;padding:4px 7px 4px 10px!important}.schedule .map .map-pin,.map.map-refined .map-pin,#foodGrid .food-card-detail .spot-map-icon{width:22px!important;height:22px!important;font-size:22px!important}}
-    `;
-    document.head.appendChild(style);
+  const patchMaps=()=>{
+    const old=document.getElementById('refined-map-style'); if(old) old.remove();
+    const style=document.createElement('style'); style.id='refined-map-style';
+    style.textContent=`
+      .schedule .map::before,.schedule .map::after,.spot .map::before,.spot .map::after{content:none!important;display:none!important}
+      .schedule .map,.spot .map{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:9px!important;min-height:36px!important;padding:5px 8px 5px 13px!important;border:1px solid var(--ink)!important;border-radius:999px!important;background:transparent!important;color:var(--ink)!important;font-size:11px!important;font-weight:800!important;letter-spacing:.16em!important;line-height:1!important;text-decoration:none!important;text-align:center!important;transition:background .35s var(--ease),color .35s var(--ease),transform .35s var(--ease),padding .35s var(--ease)!important}
+      .schedule .map .map-label,.spot .map .map-label{display:inline-block!important}
+      .schedule .map .map-pin,.spot .map .map-pin{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;border:1px solid currentColor!important;border-radius:50%!important;font-size:17px!important;line-height:1!important;letter-spacing:0!important;transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease)!important}
+      .schedule .map:hover,.spot .map:hover{background:var(--ink)!important;color:var(--white)!important;transform:translateY(-2px)!important;padding-left:15px!important}
+      .schedule .map:hover .map-pin,.spot .map:hover .map-pin{background:var(--accent)!important;color:var(--ink)!important;transform:translate(1px,-1px)!important}
+      @media(max-width:700px){.schedule .map,.spot .map{min-height:38px!important;font-size:11px!important;gap:8px!important;padding:5px 7px 5px 11px!important}.schedule .map .map-pin,.spot .map .map-pin{width:25px!important;height:25px!important;font-size:17px!important}}
+    `; document.head.appendChild(style);
 
-    document.querySelectorAll('#scheduleList .item').forEach((item) => {
-      const title = item.querySelector('.event-title');
-      const map = item.querySelector('.map');
-      if (!map) return;
-      if (title && title.textContent.trim() === 'チェックアウト') { map.remove(); return; }
-      if (!map.dataset.refined) {
-        map.dataset.refined = 'true';
-        map.classList.add('map-refined');
-        map.textContent = '';
-        const label = document.createElement('span'); label.textContent = 'MAP';
-        const pin = document.createElement('span'); pin.className = 'map-pin'; pin.setAttribute('aria-hidden','true'); pin.textContent = '⌖';
-        map.append(label, pin);
-      }
+    document.querySelectorAll('#scheduleList .item').forEach(item=>{
+      const title=item.querySelector('.event-title'),map=item.querySelector('.map'); if(!map)return;
+      if(title&&title.textContent.trim()==='チェックアウト'){map.remove();return;}
+      if(!map.dataset.refined){map.dataset.refined='true';map.textContent='';const label=document.createElement('span');label.className='map-label';label.textContent='MAP';const pin=document.createElement('span');pin.className='map-pin';pin.setAttribute('aria-hidden','true');pin.textContent='⌖';map.append(label,pin)}
+    });
+
+    document.querySelectorAll('#foodGrid .spot').forEach((card,index)=>{
+      const item=travel.food[index]; if(!item||!item.map)return;
+      let map=card.querySelector('.spot-map');
+      if(!map){map=document.createElement('a');map.className='map spot-map';map.target='_blank';map.rel='noopener';card.appendChild(map)}
+      map.href=item.map;map.dataset.refined='true';map.innerHTML='<span class="map-label">MAP</span><span class="map-pin" aria-hidden="true">⌖</span>';
     });
   };
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', patchMaps, { once:true }); else patchMaps();
-  [150,500,1000,1800].forEach((ms) => window.setTimeout(patchMaps, ms));
-})();
-
-// SPOTS MAP links: add a consistent MAP + pin control beneath DETAILS for every spot with a map URL.
-(() => {
-  const addSpotMaps = () => {
-    const cards = document.querySelectorAll('#foodGrid .spot, #foodGrid .food-card');
-    if (!cards.length || !window.travel?.food) return;
-    cards.forEach((card, index) => {
-      const data = travel.food[index];
-      if (!data?.map || card.querySelector('.spot-map-link')) return;
-      const link = document.createElement('a');
-      link.className = 'spot-map-link map-refined';
-      link.href = data.map;
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.setAttribute('aria-label', `${data.name}のMAPを開く`);
-      link.innerHTML = '<span>MAP</span><span class="spot-map-icon" aria-hidden="true">⌖</span>';
-      const detail = card.querySelector('.link, .food-card-detail');
-      (detail || card.lastElementChild || card).insertAdjacentElement('afterend', link);
-    });
-  };
-  const style = document.createElement('style');
-  style.textContent = `
-    .spot-map-link{display:inline-flex!important;align-items:center!important;gap:8px!important;margin-top:12px!important;padding:4px 8px 4px 11px!important;border:0!important;border-radius:999px!important;font-size:11px!important;font-weight:800!important;letter-spacing:.16em!important;line-height:1!important;text-decoration:none!important;transition:background .35s var(--ease),transform .35s var(--ease)!important}
-    .spot-map-link .spot-map-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:21px!important;height:21px!important;font-size:21px!important;line-height:1!important;letter-spacing:0!important;transition:transform .35s var(--ease)!important}
-    .spot-map-link:hover{background:var(--accent)!important;transform:translateX(2px)!important}.spot-map-link:hover .spot-map-icon{transform:translateY(-2px)!important}
-    @media(max-width:700px){.spot-map-link{font-size:11px!important;padding:5px 8px 5px 10px!important}.spot-map-link .spot-map-icon{width:22px!important;height:22px!important;font-size:22px!important}}
-  `;
-  document.head.appendChild(style);
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addSpotMaps, { once:true }); else addSpotMaps();
-  [150,500,1000,1800].forEach((ms) => window.setTimeout(addSpotMaps, ms));
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',patchMaps,{once:true});else patchMaps();
+  [150,500,1000,1800].forEach(ms=>window.setTimeout(patchMaps,ms));
 })();
