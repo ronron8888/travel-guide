@@ -105,3 +105,43 @@ var travel = window.travel = {
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',applyMapStyle,{once:true}); else applyMapStyle();
   window.setTimeout(applyMapStyle,300);
 })();
+
+// Add a dedicated MAP action to every SPOTS card.
+(() => {
+  const addSpotMaps = () => {
+    const cards = Array.from(document.querySelectorAll('#foodGrid .food-card'));
+    if (!cards.length || !window.travel?.food) return;
+    cards.forEach((card, index) => {
+      const item = travel.food[index];
+      const detail = card.querySelector('.food-card-detail');
+      if (!item?.map || !detail || detail.dataset.mapReady === 'true') return;
+      detail.dataset.mapReady = 'true';
+      detail.setAttribute('role', 'link');
+      detail.setAttribute('tabindex', '0');
+      detail.setAttribute('aria-label', `${item.name}の地図を開く`);
+      detail.innerHTML = `MAP <span class="spot-map-icon" aria-hidden="true">⌖</span>`;
+      const openMap = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        window.open(item.map, '_blank', 'noopener,noreferrer');
+      };
+      detail.addEventListener('click', openMap);
+      detail.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') openMap(event);
+      });
+    });
+  };
+  const style = document.createElement('style');
+  style.textContent = `
+    #foodGrid .food-card-detail{cursor:pointer;align-items:center;gap:7px;transition:background .35s var(--ease),padding .35s var(--ease),transform .35s var(--ease);user-select:none}
+    #foodGrid .food-card-detail > span:not(.spot-map-icon){display:none!important}
+    #foodGrid .food-card-detail .spot-map-icon{display:inline-flex!important;align-items:center;justify-content:center;width:16px;height:16px;font-size:16px;line-height:1;transition:transform .35s var(--ease)}
+    #foodGrid .food-card-detail:hover{padding:3px 8px 3px 10px;background:var(--accent);border-bottom-color:transparent;transform:translateX(2px)}
+    #foodGrid .food-card-detail:hover .spot-map-icon{transform:translateY(-2px)}
+    #foodGrid .food-card-detail:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  `;
+  document.head.appendChild(style);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addSpotMaps, { once:true }); else addSpotMaps();
+  window.setTimeout(addSpotMaps, 200);
+  window.setTimeout(addSpotMaps, 800);
+})();
