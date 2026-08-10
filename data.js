@@ -63,7 +63,6 @@ var travel = window.travel = {
   const applyHero=()=>{const hero=document.querySelector('.hero-image');if(!hero)return;const image="url('https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602')";hero.style.setProperty('background-image',image,'important');hero.style.setProperty('background-size','cover','important');hero.style.setProperty('background-position','center','important');hero.style.setProperty('background-repeat','no-repeat','important')};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyHero,{once:true});else applyHero();
 })();
 
-// Unified, refined MAP pill for PLAN and SPOTS.
 (() => {
   const patchMaps=()=>{
     const old=document.getElementById('refined-map-style'); if(old) old.remove();
@@ -77,13 +76,11 @@ var travel = window.travel = {
       .schedule .map:hover .map-pin,.spot .map:hover .map-pin{background:var(--accent)!important;color:var(--ink)!important;transform:translate(1px,-1px)!important}
       @media(max-width:700px){.schedule .map,.spot .map{min-height:38px!important;font-size:11px!important;gap:8px!important;padding:5px 7px 5px 11px!important}.schedule .map .map-pin,.spot .map .map-pin{width:25px!important;height:25px!important;font-size:17px!important}}
     `; document.head.appendChild(style);
-
     document.querySelectorAll('#scheduleList .item').forEach(item=>{
       const title=item.querySelector('.event-title'),map=item.querySelector('.map'); if(!map)return;
       if(title&&title.textContent.trim()==='チェックアウト'){map.remove();return;}
       if(!map.dataset.refined){map.dataset.refined='true';map.textContent='';const label=document.createElement('span');label.className='map-label';label.textContent='MAP';const pin=document.createElement('span');pin.className='map-pin';pin.setAttribute('aria-hidden','true');pin.textContent='⌖';map.append(label,pin)}
     });
-
     document.querySelectorAll('#foodGrid .spot').forEach((card,index)=>{
       const item=travel.food[index]; if(!item||!item.map)return;
       let map=card.querySelector('.spot-map');
@@ -93,4 +90,43 @@ var travel = window.travel = {
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',patchMaps,{once:true});else patchMaps();
   [150,500,1000,1800].forEach(ms=>window.setTimeout(patchMaps,ms));
+})();
+
+// Final SPOTS repair: keep the store link and MAP link as separate, valid siblings.
+(() => {
+  const repairSpots = () => {
+    const grid = document.getElementById('foodGrid');
+    if (!grid || !window.travel?.food?.length) return;
+    const cards = Array.from(grid.querySelectorAll('.food-card'));
+    cards.forEach((card, index) => {
+      const item = travel.food[index];
+      if (!item) return;
+      const current = card.querySelector('.food-card-link');
+      if (!current || current.dataset.linksRepaired === 'true') return;
+      const imageWrap = current.querySelector('.food-card-image-wrap');
+      const image = imageWrap?.querySelector('img');
+      const body = current.querySelector('.food-card-body');
+      const name = body?.querySelector('.food-card-name');
+      const note = body?.querySelector('.food-card-note');
+      if (!imageWrap || !body || !name || !note) return;
+      const replacement = document.createDocumentFragment();
+      const imgLink = document.createElement('a');
+      imgLink.className = 'food-card-image-link'; imgLink.href = item.url || '#'; imgLink.target = '_blank'; imgLink.rel = 'noopener noreferrer';
+      imgLink.appendChild(imageWrap);
+      replacement.appendChild(imgLink);
+      const newBody = document.createElement('div'); newBody.className = 'food-card-body';
+      const eyebrow = document.createElement('div'); eyebrow.className = 'eyebrow'; eyebrow.textContent = 'FOOD / KAWAGOE';
+      const newName = document.createElement('h3'); newName.className = 'food-card-name'; newName.textContent = item.name;
+      const newNote = document.createElement('p'); newNote.className = 'food-card-note'; newNote.textContent = item.note;
+      const actions = document.createElement('div'); actions.className = 'food-card-actions';
+      const details = document.createElement('a'); details.className = 'food-card-detail'; details.href = item.url || '#'; details.target = '_blank'; details.rel = 'noopener noreferrer'; details.innerHTML = 'DETAILS <span>↗</span>';
+      actions.appendChild(details);
+      if (item.map) { const map = document.createElement('a'); map.className = 'map spot-map spot-map-button'; map.href = item.map; map.target = '_blank'; map.rel = 'noopener noreferrer'; map.setAttribute('aria-label', `${item.name}のMAP`); map.innerHTML = '<span class="map-label spot-map-label">MAP</span><span class="map-pin spot-map-icon" aria-hidden="true">⌖</span>'; actions.appendChild(map); }
+      newBody.append(eyebrow, newName, newNote, actions); replacement.appendChild(newBody);
+      current.replaceWith(replacement);
+      card.dataset.linksRepaired = 'true';
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', repairSpots, {once:true}); else repairSpots();
+  [200,700,1400,2200].forEach(ms => window.setTimeout(repairSpots, ms));
 })();
