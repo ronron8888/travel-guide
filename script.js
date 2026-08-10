@@ -39,3 +39,17 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once:true }); else init();
 })();
 (() => { const applyHero = () => { const hero=document.querySelector('.hero-image'); if(!hero)return; const image='https://local-best.jp/wp-content/themes/localbest/images/detail/jp/ho/ref/saitama/ja_Y381064138.webp?v=20260810'; hero.style.setProperty('background-image',`url("${image}")`,'important'); hero.style.setProperty('background-size','cover','important'); hero.style.setProperty('background-position','center center','important'); hero.style.setProperty('background-repeat','no-repeat','important'); }; if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',applyHero,{once:true});else applyHero(); window.setTimeout(applyHero,100);window.setTimeout(applyHero,500);})();
+
+/* Final MAP refinement: keep the existing MAP text and add only one circular arrow. */
+(() => {
+  const style = document.createElement('style');
+  style.textContent = `
+    .schedule .map:before{content:none!important;display:none!important}
+    .schedule .map:after{content:"↗"!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;border:1px solid currentColor!important;border-radius:50%!important;font-size:12px!important;letter-spacing:0!important;line-height:1!important}
+    .schedule .map{gap:8px!important;min-height:30px!important;padding:2px 4px 2px 10px!important;border:1px solid transparent!important;border-radius:999px!important;font-size:8px!important;font-weight:700!important;letter-spacing:.16em!important;text-decoration:none!important;transition:transform .35s var(--ease),background .35s var(--ease),border-color .35s var(--ease),padding .35s var(--ease)!important}
+    .schedule .map:hover{transform:translateX(2px)!important;padding-left:12px!important;background:var(--accent)!important;border-color:var(--accent)!important}
+    .schedule .map:hover:after{transform:translate(2px,-2px)!important;background:var(--ink)!important;color:var(--white)!important}
+    @media(max-width:700px){.schedule .map{justify-content:flex-start!important;text-align:left!important}}
+  `;
+  document.head.appendChild(style);
+})();
