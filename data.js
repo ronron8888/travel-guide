@@ -86,3 +86,24 @@ var travel = window.travel = {
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHero, { once:true }); else applyHero();
 })();
+
+// Final MAP cleanup: use one elegant icon only. Remove legacy arrow/pin decorations.
+(() => {
+  const applyMapStyle = () => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .schedule .map:before,.schedule .map:after{content:none!important;display:none!important}
+      .schedule .map{display:inline-flex!important;align-items:center!important;gap:7px!important;min-height:30px!important;padding:3px 6px 3px 10px!important;border:0!important;border-radius:999px!important;font-size:9px!important;font-weight:700!important;letter-spacing:.16em!important;text-decoration:none!important;transition:background .35s var(--ease),transform .35s var(--ease),padding .35s var(--ease)!important}
+      .schedule .map::first-letter{letter-spacing:.16em}
+      .schedule .map:hover{background:var(--accent)!important;transform:translateX(2px)!important;padding-left:13px!important}
+      .schedule .map:hover svg{transform:translate(2px,-2px)!important}
+      .schedule .map svg{width:15px!important;height:15px!important;display:block!important;transition:transform .35s var(--ease)!important}
+      .schedule .map .map-icon{display:inline-flex!important;width:15px!important;height:15px!important;align-items:center!important;justify-content:center!important}
+      .schedule .map .map-icon::before{content:'⌖';font-size:16px;line-height:1}
+      @media(max-width:700px){.schedule .map{justify-content:flex-start!important;text-align:left!important}}
+    `;
+    document.head.appendChild(style);
+  };
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',applyMapStyle,{once:true}); else applyMapStyle();
+  window.setTimeout(applyMapStyle,300);
+})();
