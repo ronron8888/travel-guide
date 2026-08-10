@@ -22,16 +22,16 @@ var travel = window.travel = {
     { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00〜・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸", url: "https://hanayu-bettei.com/", image: "https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602" }
   ],
   food: [
-    { name: "みっふぃー蔵のきっちん＆べーかりー川越店", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/", image: null },
-    { name: "小江戸川越 元町テラス", note: "芋チップスやクロッフルなどのスイーツ", url: "https://kawagoe-motomachi-terrace.com/", image: null },
-    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://www.instagram.com/ebisuan.222/", image: "https://tblg.k-img.com/restaurant/images/Rvw/339436/640x640_rect_acc56f012d63170579a91f79057d9038.jpg" },
-    { name: "川越バターサンド", note: "川越でチェックしたいバターサンド候補", url: "https://kawagoe-buttersand.com/", image: null },
-    { name: "抹茶あらた", note: "狭山茶と抹茶を使ったドリンクや和スイーツ", url: "https://matcha-arata.jp/", image: null },
-    { name: "リビスコ川越店", note: "毎朝、新鮮な牛乳と生の果物から作るジェラート", url: "https://libisco.com/", image: null },
-    { name: "小江戸釜めし 鳥清（とりせい）", note: "時の鐘すぐ近く。炊きたての釜めしと鶏料理が楽しめる", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", image: "https://stat.ameba.jp/user_images/20240408/11/korokoro0105/72/c6/j/o3303220215423097735.jpg" },
-    { name: "亀屋", note: "川越の老舗菓子店。公式サイトから商品・店舗情報を確認", url: "https://www.koedo-kameya.com/", image: null },
-    { name: "Mio Casalo", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/421359/", image: "https://stat.ameba.jp/user_images/20221203/22/tmoumou43/f8/9b/j/o1080081015211622878.jpg" },
-    { name: "うし川", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/415669/", image: "https://ximg.retty.me/crop/s400x400/q80/das/-/retty/img_repo/2l/01/33423834.jpg" }
+    { name: "みっふぃー蔵のきっちん＆べーかりー川越店", note: "焼きたてパンやお土産・キッチン雑貨をチェック", url: "https://miffykitchenbakery.jp/", map: "https://www.google.com/maps/search/?api=1&query=みっふぃー蔵のきっちん＆べーかりー川越店", image: null },
+    { name: "小江戸川越 元町テラス", note: "芋チップスやクロッフルなどのスイーツ", url: "https://kawagoe-motomachi-terrace.com/", map: "https://www.google.com/maps/search/?api=1&query=小江戸川越+元町テラス", image: null },
+    { name: "えびす庵", note: "だし巻玉子串など、川越の蔵造りの街並みで食べ歩き", url: "https://www.instagram.com/ebisuan.222/", map: "https://www.google.com/maps/search/?api=1&query=えびす庵+川越", image: "https://tblg.k-img.com/restaurant/images/Rvw/339436/640x640_rect_acc56f012d63170579a91f79057d9038.jpg" },
+    { name: "川越バターサンド", note: "川越でチェックしたいバターサンド候補", url: "https://kawagoe-buttersand.com/", map: "https://www.google.com/maps/search/?api=1&query=川越バターサンド", image: null },
+    { name: "抹茶あらた", note: "狭山茶と抹茶を使ったドリンクや和スイーツ", url: "https://matcha-arata.jp/", map: "https://www.google.com/maps/search/?api=1&query=抹茶あらた+川越", image: null },
+    { name: "リビスコ川越店", note: "毎朝、新鮮な牛乳と生の果物から作るジェラート", url: "https://libisco.com/", map: "https://www.google.com/maps/search/?api=1&query=リビスコ川越店", image: null },
+    { name: "小江戸釜めし 鳥清（とりせい）", note: "時の鐘すぐ近く。炊きたての釜めしと鶏料理が楽しめる", url: "https://kawagoe.fun/magazine/gourmet/kawagoe-torisei/", map: "https://www.google.com/maps/search/?api=1&query=小江戸釜めし+鳥清+川越", image: "https://stat.ameba.jp/user_images/20240408/11/korokoro0105/72/c6/j/o3303220215423097735.jpg" },
+    { name: "亀屋", note: "川越の老舗菓子店。公式サイトから商品・店舗情報を確認", url: "https://www.koedo-kameya.com/", map: "https://www.google.com/maps/search/?api=1&query=亀屋+川越", image: null },
+    { name: "Mio Casalo", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/421359/", map: "https://www.google.com/maps/search/?api=1&query=Mio+Casalo+川越", image: "https://stat.ameba.jp/user_images/20221203/22/tmoumou43/f8/9b/j/o1080081015211622878.jpg" },
+    { name: "うし川", note: "川越の気になるグルメ候補", url: "https://san-tatsu.jp/spots/415669/", map: "https://www.google.com/maps/search/?api=1&query=うし川+川越", image: "https://ximg.retty.me/crop/s400x400/q80/das/-/retty/img_repo/2l/01/33423834.jpg" }
   ],
   packing: [
     "スマートフォン・充電器",
@@ -73,7 +73,6 @@ var travel = window.travel = {
   window.setTimeout(applyTripLayout, 800);
 })();
 
-// Single hero image: Hanayu Bettei.
 (() => {
   const applyHero = () => {
     const hero = document.querySelector('.hero-image');
@@ -94,7 +93,6 @@ var travel = window.travel = {
     style.textContent = `
       .schedule .map:before,.schedule .map:after{content:none!important;display:none!important}
       .schedule .map{display:inline-flex!important;align-items:center!important;gap:7px!important;min-height:30px!important;padding:3px 6px 3px 10px!important;border:0!important;border-radius:999px!important;font-size:9px!important;font-weight:700!important;letter-spacing:.16em!important;text-decoration:none!important;transition:background .35s var(--ease),transform .35s var(--ease),padding .35s var(--ease)!important}
-      .schedule .map::first-letter{letter-spacing:.16em}
       .schedule .map:hover{background:var(--accent)!important;transform:translateX(2px)!important;padding-left:13px!important}
       .schedule .map:hover svg{transform:translate(2px,-2px)!important}
       .schedule .map svg{width:15px!important;height:15px!important;display:block!important;transition:transform .35s var(--ease)!important}
