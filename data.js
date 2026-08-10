@@ -9,14 +9,14 @@ var travel = window.travel = {
   ],
   schedule: [
     { time: "10:30", title: "一部メンバー集合", description: "一部メンバーは10:30に熊谷駅へ集合", map: "https://www.google.com/maps/search/?api=1&query=熊谷駅" },
-    { time: "11:00", title: "集合", description: "集合時間 11:00。集合場所は確定後に入力", map: "https://www.google.com/maps" },
-    { time: "12:00", title: "ランチ", description: "12:00からランチ。", map: "https://www.google.com/maps" },
-    { time: "13:00", title: "長瀞へ移動", description: "ランチ後、長瀞の花湯別邸へ移動", map: "https://www.google.com/maps" },
-    { time: "15:00", title: "花湯別邸 チェックイン", description: "15:00〜 チェックイン。温泉・岩盤浴などを楽しむ", map: "https://www.google.com/maps" },
-    { time: "18:00", title: "花湯別邸", description: "夕食・温泉・岩盤浴を楽しみながらゆっくり過ごす", map: "https://www.google.com/maps" },
-    { time: "10:00", title: "チェックアウト", description: "花湯別邸をチェックアウト。2日目は川越へ移動", map: "https://www.google.com/maps" },
-    { time: "11:00", title: "2日目・川越散策", description: "川越で食べ歩き・お土産探し。気になるスポットを自由に巡る", map: "https://www.google.com/maps" },
-    { time: "—", title: "各自帰宅", description: "川越散策後、各自のタイミングで帰宅", map: "https://www.google.com/maps" }
+    { time: "11:00", title: "集合", description: "集合時間 11:00。集合場所は確定後に入力" },
+    { time: "12:00", title: "ランチ", description: "12:00からランチ。" },
+    { time: "13:00", title: "長瀞へ移動", description: "ランチ後、長瀞の花湯別邸へ移動", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸" },
+    { time: "15:00", title: "花湯別邸 チェックイン", description: "15:00〜 チェックイン。温泉・岩盤浴などを楽しむ" },
+    { time: "18:00", title: "花湯別邸", description: "夕食・温泉・岩盤浴を楽しみながらゆっくり過ごす" },
+    { time: "10:00", title: "チェックアウト", description: "花湯別邸をチェックアウト。2日目は川越へ移動", map: "https://www.google.com/maps/search/?api=1&query=川越駅" },
+    { time: "11:00", title: "2日目・川越散策", description: "川越で食べ歩き・お土産探し。気になるスポットを自由に巡る", map: "https://www.google.com/maps/search/?api=1&query=川越" },
+    { time: "—", title: "各自帰宅", description: "川越散策後、各自のタイミングで帰宅" }
   ],
   stay: [
     { name: "花湯別邸", note: "埼玉県秩父郡長瀞町本野上47-1｜チェックイン15:00〜・チェックアウト10:00｜オールインクルーシブ", map: "https://www.google.com/maps/search/?api=1&query=花湯別邸", url: "https://hanayu-bettei.com/", image: "https://trvimg.r10s.jp/share/image_up/178289/origin/84f3722485fbfb8d8d5e5b7056fd223de1b75009.47.1.26.2.jpg?fit=inside%7C2850%3A1602" }
